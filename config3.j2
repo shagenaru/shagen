@@ -1,0 +1,18 @@
+{% for address,items in interfaces.items() %}
+interface gigabitEthernet0/{{ items.number }}
+ip address {{ items.ip }} {{ items.mask }}
+no sh
+!
+{% endfor %}
+
+interface gigabitEthernet0/1
+ip address {{ wan_ip }} 255.255.255.252
+
+router bgp 64999
+address-family ipv4
+{% for network,ips in peers.items() %}
+network {{ ips.net }} mask {{ ips.mask }}
+{% endfor %}
+exit-address-family
+exit
+!
