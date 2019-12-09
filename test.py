@@ -1,4 +1,5 @@
 #!/bin/python
+#test
 ip = raw_input("vvedi diapzon ip:")
 a = ip.split('-')
 div = [a[0]]
