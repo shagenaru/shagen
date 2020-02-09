@@ -1,0 +1,18 @@
+#test for merge
+{% for vlan,name in vlans.items() %}
+vlan {{ vlan }}
+ description {{ name }}
+{% endfor %}
+!
+{% for inter in interfaces %}
+interface {{ inter.inter }}
+{% if inter.mode == 'access' %}
+ switchport mode access
+ swichport access vlan {{ inter.vlan }}
+{% else %}
+ switchport mode trunk
+ switchport trunk allowd add {{ inter.vlan }}
+{% endif %}
+{% endfor %}
+!
+
