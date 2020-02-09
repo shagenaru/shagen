@@ -1,0 +1,14 @@
+vlans:
+ 10: test
+ 20: test2
+ 30: test3
+interfaces:
+ - inter: fa0/1
+   mode: access
+   vlan: 10
+ - inter: fa0/2
+   mode: access
+   vlan: 20
+ - inter: gi0/0
+   mode: trunk
+   vlan: 10,20,30
